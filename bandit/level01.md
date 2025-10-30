@@ -28,7 +28,7 @@ Learn how to read files with unusual names in the Linux terminal.
 
    You’ll see a file named `-`.
 
----`
+---
 
 3. Since the file name starts with a dash (`-`), typing `cat -` won’t work because the terminal interprets it as an option.
    Instead, specify the full path to the file:
