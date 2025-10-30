@@ -18,8 +18,7 @@ Learn how to connect to a remote server using SSH.
 2. Connect using SSH:
    ```bash
    ssh bandit0@bandit.labs.overthewire.org -p 2220
-
----
+   ```
 
 3. Once connected, you’re inside the Bandit Level 0 environment.
 
