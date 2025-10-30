@@ -19,13 +19,17 @@ Learn how to read files with unusual names in the Linux terminal.
    ssh bandit1@bandit.labs.overthewire.org -p 2220
 ````
 
+---
+
 2. List the files in the home directory:
 
    ```bash
    ls
    ```
 
-   You’ll see a file named `-`.
+   You’ll see a file named `-
+
+---`.
 
 3. Since the file name starts with a dash (`-`), typing `cat -` won’t work because the terminal interprets it as an option.
    Instead, specify the full path to the file:
@@ -33,6 +37,8 @@ Learn how to read files with unusual names in the Linux terminal.
    ```bash
    cat ./-
    ```
+
+---
 
 4. This displays the password for the next level.
 
@@ -45,6 +51,8 @@ The file `-` contains the password needed to log in to the next level (`bandit2`
 ```bash
 cat ./-
 ```
+
+---
 
 Copy the output and save it for the next login.
 
