@@ -46,8 +46,6 @@ The file `-` contains the password needed to log in to the next level (`bandit2`
 cat ./-
 ```
 
----
-
 Copy the output and save it for the next login.
 
 ---
