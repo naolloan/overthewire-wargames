@@ -1,15 +1,15 @@
 # Bandit Level 14 → Level 15
 
 ## 🧩 Goal
-The password for the next level is stored in the file `data.txt`. This file contains **base64-encoded data**. Your task is to decode it to retrieve the password for `bandit15`.
+Submit the password of the current level to a service listening on **localhost port 30000**. The service will return the password for the next level.
 
 ---
 
 ## 🔑 Credentials
 - **Username:** bandit14  
-- **Password:** [password from previous level]  
+- **Password:** (password from previous level / the one you used to login to bandit14)  
 - **Host:** bandit.labs.overthewire.org  
-- **Port:** 2220
+- **Port:** 2220 (SSH)
 
 ---
 
@@ -19,47 +19,76 @@ The password for the next level is stored in the file `data.txt`. This file cont
    ssh bandit14@bandit.labs.overthewire.org -p 2220
    ````
 
-2. Confirm the presence of the file and check its type:
+2. Once logged in, send your current password to **localhost:30000**. Replace `CURRENT_PASSWORD` with the password you used to get into bandit14. Use one of these safe methods:
+
+   * Using `nc` (netcat):
+
+     ```bash
+     # prints the response (the next password)
+     echo -n 'CURRENT_PASSWORD' | nc localhost 30000
+     ```
+
+   * Using `printf` (avoids adding a newline if that's required):
+
+     ```bash
+     printf '%s' 'CURRENT_PASSWORD' | nc localhost 30000
+     ```
+
+   * If your system's `nc` supports `-q` to quit after sending:
+
+     ```bash
+     printf '%s\n' 'CURRENT_PASSWORD' | nc -q 1 localhost 30000
+     ```
+
+   * Using bash /dev/tcp (if available):
+
+     ```bash
+     printf '%s' 'CURRENT_PASSWORD' > /dev/tcp/localhost/30000
+     # to capture response to a variable:
+     exec 3<>/dev/tcp/localhost/30000
+     printf '%s' 'CURRENT_PASSWORD' >&3
+     cat <&3
+     exec 3>&-  # close
+     ```
+
+   * If `telnet` is available (interactive):
+
+     ```bash
+     telnet localhost 30000
+     # then paste the password and press Enter
+     ```
+
+   Note: If the service expects a newline-terminated string, include `\n` (e.g., `printf '%s\n' 'CURRENT_PASSWORD' | nc ...`).
+
+3. The service will reply with the **password for bandit15**. Copy that response.
+
+4. Use the returned password to SSH into the next level:
 
    ```bash
-   ls -l
-   file data.txt
-   head -n 5 data.txt
+   ssh bandit15@bandit.labs.overthewire.org -p 2220
    ```
-
-   You’ll see that it is a text file containing characters typical of Base64 encoding (letters, digits, `+`, `/`, and `=` padding).
-
-3. Decode the Base64-encoded content:
-
-   ```bash
-   base64 -d data.txt > password.txt
-   ```
-
-4. Display the decoded password:
-
-   ```bash
-   cat password.txt
-   ```
-
-   The output is the password for `bandit15`.
 
 ---
 
-## ✅ One-liner alternative
-
-You can decode and display in one command without creating an intermediate file:
+## ✅ Example one-liner (typical)
 
 ```bash
-base64 -d data.txt
+echo -n 'CURRENT_PASSWORD' | nc localhost 30000
 ```
+
+Replace `CURRENT_PASSWORD` with the password for `bandit14`. The output is the password for `bandit15`.
 
 ---
 
 ## 💡 What I Learned
 
-* How to **identify Base64-encoded data** — usually text with A-Z, a-z, 0-9, `+`, `/`, and `=` padding.
-* How to **decode Base64 in Linux** using the `base64 -d` command.
-* Base64 is a common encoding used to safely transmit binary data in text form, which is useful in emails, data serialization, and CTF challenges.
-* This level reinforced pattern recognition: spotting encoded data, then applying the appropriate decoding tool.
+* How to interact with **local network services** (TCP) from the shell using `nc`, `telnet`, or `/dev/tcp`.
+* How to safely send a secret string over a TCP connection from a shell and capture the response.
+* Using `printf` instead of `echo` can avoid unintended newlines or interpretation differences across shells.
+* Small network services on localhost are common in CTFs — knowing how to send and receive raw TCP data is a useful skill for protocols and forensics.
 
+---
+
+Want me to also update the `bandit/README.md` progress table to reflect that Level 14 is complete (or whatever current status you want)?
+::contentReference[oaicite:0]{index=0}
 ```
