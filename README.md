@@ -19,7 +19,7 @@ Each level write-up contains:
 
 | Game | Description | Progress |
 |------|--------------|-----------|
-| [Bandit](./bandit/README.md) | Linux and SSH fundamentals | ✅ Levels 0–34 completed |
+| [Bandit](./bandit/README.md) | Linux and SSH fundamentals | ✅ Levels 0 completed |
 | [Narnia](./narnia/README.md) | Binary exploitation basics | 🔜 Coming soon |
 
 ---
