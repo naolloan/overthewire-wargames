@@ -17,7 +17,6 @@ Learn how to read files with unusual names in the Linux terminal.
 1. SSH into the next level:
    ```bash
    ssh bandit1@bandit.labs.overthewire.org -p 2220
-````
 
 ---
 
