@@ -13,9 +13,6 @@ find /home -type f -user bandit7 -group bandit6 -size 33c
 ![level 6 screenshot 1](images/Screenshot7.png)
 
 *This command will display many files saying 'permission denied'. We can avoid this sending the error stream denoted by number 2 to /dev/null . NULL is a special device on Linux which destroys all that data that is sent to it. So the command becomes ```bash find / -type f -user bandit7 -group bandit6 -size 33c 2> /dev/null```
-*Now that we have found the file, let us go ahead and dosplay its contents. ! We found the password for the next level.
+.Now that we have found the file, let us go ahead and dosplay its contents. !Wala we found the password for the next level.
 
 ![level 6 screenshot 2](images/Screenshot8.png)
-
-
-This challenge reinforced practical skills in targeted filesystem search and safe inspection of files on Linux systems.
