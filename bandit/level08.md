@@ -1,57 +1,10 @@
 # Bandit Level 8 → Level 9
 
-## 🧩 Goal
-The password for the next level is stored in the file `data.txt` and is **the only line that occurs once** in the file.
+In this level to find the password we need to filter out a line that occurs only once in the data.txt file. To achieve this we will use two very important commands together which are `sort` and `uniq`. First we will sort the lines and give the sorted lines as inputs for uniq to filter out the only line that is not repeated along with `-u` flag. You might be asking why the sort command is needed, that is a very a valid question. We must use the sort command because the uniq command expects the repeated lines to appear next to each other so we need to sort our data before finding the unique one.
 
----
-
-## 🔑 Credentials
-- **Username:** bandit8  
-- **Password:** [password from previous level]  
-- **Host:** bandit.labs.overthewire.org  
-- **Port:** 2220
-
----
-
-## 💻 Steps
-1. SSH into the level:
-   ```bash
-   ssh bandit8@bandit.labs.overthewire.org -p 2220
-   ````
-
-2. Verify that `data.txt` exists:
-
-   ```bash
-   ls -l
-   file data.txt
-   ```
-
-3. The goal is to find the **unique** line — that is, the line that appears only once.
-   The `sort` and `uniq` commands can help:
-
-   ```bash
-   sort data.txt | uniq -u
-   ```
-
-   * `sort` — sorts all lines alphabetically (required for `uniq` to group duplicates correctly).
-   * `uniq -u` — prints only lines that appear exactly once.
-
-4. The output of the above command is the password for the next level (`bandit9`).
-
----
-
-## ✅ Example (concise one-liner)
-
+The command is :
 ```bash
-sort data.txt | uniq -u
-```
+   cat data.txt | sort | uniq -u
+````
 
----
-
-## 💡 What I Learned
-
-* How to use `sort` and `uniq` together to find **unique entries** in a dataset.
-* The importance of sorting before using `uniq`, since `uniq` only detects consecutive duplicates.
-* This challenge emphasized data filtering and pattern recognition — essential for log analysis and data forensics.
-
-```
+![level 8 screenshot](images/Screenshot10.png)
