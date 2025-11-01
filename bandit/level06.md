@@ -4,7 +4,7 @@ In this level, we asked to find a file somewhere in the home directory that is o
 ```bash
 find /home -type f -user bandit7 -group bandit6 -size 33c
 ```
-*/ : is to find all files in the home directory
+* / : is to find all files in the home directory
 * -type f : to find files only
 * -group bandit6 : to find the specific group
 * -user bandit7 : to find the specific owner
