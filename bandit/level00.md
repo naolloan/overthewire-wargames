@@ -2,7 +2,7 @@
 
 For this level all we got to do is login into the overthewire device from our device using ssh. The credentials(username, password, the host and also the port is not the default 22, it is also provided) are provided. We just need to ssh our way into the remote device and get on.
 
-!images/level00.png
+![level00 screenshot](images/level00.png)
 
 ---
 
