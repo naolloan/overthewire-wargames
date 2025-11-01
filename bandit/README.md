@@ -1,20 +1,54 @@
-# Bandit — OverTheWire
+# Bandit OverTheWire – Learning Journey
 
-The **Bandit** wargame is designed for beginners to learn the basics of Linux and command-line operations.  
-It introduces SSH, file manipulation, permissions, and simple scripting.
+This folder documents my **step-by-step journey through the Bandit wargame** on [OverTheWire](https://overthewire.org/wargames/bandit/).  
+
+For each Bandit level, I created a separate Markdown file.
+
+# Folder Structure
+
+```
+
+bandit/
+├── level00.md   # Login via SSH and basics
+├── level01.md   # Basic file reading
+├── level02.md   # Filenames with spaces
+├── level03.md   # Hidden files
+├── level04.md   # File types
+├── level05.md   # Human-readable files in a directory
+├── level06.md   # File ownership
+├── level07.md   # Searching text in files
+├── level08.md   # Unique lines in a file
+├── level09.md   # ROT13 encoded text
+├── level10.md   # Decoding/compressed data
+├── level11.md   # ROT13 again
+├── level12.md   # Hexdump and iterative decompression
+├── level13.md   # SSH private key usage
+├── level14.md   # Base64 decoding
+├── level15.md   # …and so on
+└── README.md    # This file
+
+```
 
 ---
 
-## ⚔️ Levels Overview
+## Learning Outcomes
 
-| Level | Topic | File |
-|--------|--------|------|
-| 0 | Connecting via SSH | [level00.md](./level00.md) |
-| 1 | Reading files | [level01.md](./level01.md) |
-| 2 | Hidden files | [level02.md](./level02.md) |
+Through Bandit, I gained hands-on experience with:
+
+- **Linux command line** (file manipulation, navigation, permissions, text processing)  
+- **SSH and authentication** (password and key-based login)  
+- **Text processing tools**: `grep`, `awk`, `sed`, `tr`, `sort`, `uniq`, `strings`  
+- **File identification and decoding**: `file`, `xxd`, `base64`, `gunzip`, `bunzip2`, `tar`  
+- **Problem-solving workflow**: inspect → identify → act → verify  
+
+This structured approach reinforces skills that are essential for cybersecurity, system administration, and CTF challenges.
 
 ---
 
-## 🧭 How to Connect
-```bash
-ssh bandit0@bandit.labs.overthewire.org -p 2220
+## References
+
+- [OverTheWire Bandit Wargame](https://overthewire.org/wargames/bandit/)  
+- Linux documentation (`man` pages, online guides)  
+- Community discussions for learning and tips
+  
+```
