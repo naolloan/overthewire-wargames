@@ -1,5 +1,7 @@
 # Bandit Level 4 → Level 5
 
-For this level we are supposed to find the only human-readable file. So to get started ssh into the level and list all files in the current directory, you will see a directory name inhere. Move to that directory and list all files inside that directory, you'll see many files without extensions. To find the one that contains readble text use the `file` command. Since there are multiple files use `file ./*` which lets us find the type of the all the files in the current directory. You will get the type of each file. The one with the `ASCII` type is the one that contains readable text. Once you find this file display its content and the passsword for the next level is right there.
+In this level we are expected to look for a file using its specific features such as its size, it type and if it being non-executable. Afer logging into the level go to inhere directory and list the files in there. You'll see many directories in there, but we do not know in which directory the file we are looking for is. So we need to find the file from the current directory(inhere). To do that we can use the 'find' command. To specify the size the command is '-size 1033c', 1033c is the size of the file we want, find uses 'c' to represent bytes. To look for non-executable files the command is '-not -executable'. And to specify the type we use the 'grep' command which is used to find patterns, so to find readable file we use 'grep ASCII'. Generally to find the password for this level the command is :
 
-![level 4 screenshot](images/Screenshot5.png)
+find . -type f -size 1033c -not -executable -exec {} + | grep ASCII
+
+![level 5 screenshot](images/Screenshot6.png)
