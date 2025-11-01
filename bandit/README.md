@@ -48,7 +48,4 @@ This structured approach reinforces skills that are essential for cybersecurity,
 ## References
 
 - [OverTheWire Bandit Wargame](https://overthewire.org/wargames/bandit/)  
-- Linux documentation (`man` pages, online guides)  
-- Community discussions for learning and tips
-  
-```
+- Linux documentation (`man` pages, online guides)
