@@ -14,5 +14,5 @@ This repository records my progress and methods from each level as I build stron
 
 ---
 
-> *"The only real security that a man can have in this world is a reserve of knowledge, experience and ability."*  
-> — Henry Ford
+ *"The only real security that a man can have in this world is a reserve of knowledge, experience and ability."*  
+ — Henry Ford
