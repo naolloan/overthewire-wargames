@@ -6,7 +6,7 @@ This folder documents my **step-by-step journey through the Bandit wargame** on 
 
 For each Bandit level, I created a separate Markdown file.
 
-Through Bandit, hands-on experiences with:
+Through Bandit, hands-on experience with:
 
 - **Linux command line** (file manipulation, navigation, permissions, text processing)  
 - **SSH and authentication** (password and key-based login)  
