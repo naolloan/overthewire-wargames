@@ -1,5 +1,7 @@
 # Bandit OverTheWire – Learning Journey
 
+![overthewirelogo](images/overthewirelogo.jpeg)
+
 This folder documents my **step-by-step journey through the Bandit wargame** on [OverTheWire](https://overthewire.org/wargames/bandit/).  
 
 For each Bandit level, I created a separate Markdown file.
