@@ -1,6 +1,6 @@
 # Bandit OverTheWire – Learning Journey
 
-![overthewirelogo](images/overthewirelogo.jpeg)
+![overthewirelogo](../images/overthewirelogo.jpeg)
 
 This folder documents my **step-by-step journey through the Bandit wargame** on [OverTheWire](https://overthewire.org/wargames/bandit/).  
 
