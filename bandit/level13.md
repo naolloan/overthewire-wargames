@@ -1,94 +1,46 @@
 # Bandit Level 13 → Level 14
 
-## 🧩 Goal
-Retrieve the private SSH key provided in the home directory, use it to log in as `bandit14` (the next level), and then read `/etc/bandit_pass/bandit14` to get the password for that level. :contentReference[oaicite:0]{index=0}
+In this level we use private SSH key we find in this bandit to login as bandit14.
 
----
+To start this level ssh into level 13 and list the files in the home directory. You will see a file named `sshkey.private`. This is a private SSH key you will use to authenticate as bandit 14. After getting our SSH key we can’t ssh from inside the bandit server because overthewire blocks ssh connections to port 2220 from inside the bandit server itself to save system resources.We’ll need to download or copy the private key to our local machine and use it there.
 
-## 🔑 Credentials
-- **Username:** bandit13  
-- **Password:** [password from previous level]  
-- **Host:** bandit.labs.overthewire.org  
-- **Port:** 2220
+![level 13 screenshot 1](images/Screenshot26.png)
 
----
+So let us logout of the bandit 13 shell and copy the private key to our local machine. To achive this run then following command:
 
-## 💻 Steps
-1. SSH into the level:
-   ```bash
-   ssh bandit13@bandit.labs.overthewire.org -p 2220
-   ````
+```bash
+scp -p 2220 bandit13@bandit.labs.overthewire.org:~/sshkey.private .
+```
+* scp = secure copy
+* -P 2220 = use the Bandit port
+* The last dot `.` means “save it here” in your current directory
 
-2. List the files in the home directory. You should see a private key file (commonly named `sshkey.private`):
+When asked for a password, enter the level 13 password.
 
-   ```bash
-   ls -l
-   # expected output includes: sshkey.private
-   ```
-
-   Confirm the file is present and inspect it (do not print private key to public places):
-
-   ```bash
-   file sshkey.private
-   head -n 5 sshkey.private
-   ```
-
-   (The file is your SSH private key — you will use it to authenticate as `bandit14`.) ([MayADevBe Blog][1])
-
-3. Fix the key file permissions locally or on the remote host so SSH will accept it. From the `bandit13` shell:
-
-   ```bash
-   chmod 600 sshkey.private
-   ```
-
-   (SSH requires private keys to be readable only by the owner; if permissions are too open, SSH will refuse to use the key.) ([MayADevBe Blog][1])
-
-4. Use the private key to SSH into the next level. You can connect **from the remote host** (recommended) using `localhost`:
-
-   ```bash
-   ssh -i sshkey.private -p 2220 bandit14@localhost
-   ```
-
-   Or, if you prefer to transfer the key to your local machine first, do that safely (from *your* machine):
-
-   ```bash
-   # copy the key from remote to local machine (replace <localpath> with where you want it)
-   scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private <localpath>/sshkey.private
-
-   # on your local machine, restrict permissions and use the key
-   chmod 600 <localpath>/sshkey.private
-   ssh -i <localpath>/sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org
-   ```
-
-   Note: if you scp the key to your local machine, keep it secure and delete it when finished. ([Medium][2])
-
-5. Once logged in as `bandit14`, read the password file:
-
-   ```bash
-   cat /etc/bandit_pass/bandit14
-   ```
-
-   The printed string is the password for `bandit14`. Use it to SSH into `bandit14` from your normal workflow if needed.
-
----
-
-## ✅ Concise solution (typical)
-
-From the `bandit13` session:
+After copying the key to our machine, we need to restrict the key's permissions because ssh won’t accept a key that’s too open. To do that we use chmod 600 as follows:
 
 ```bash
 chmod 600 sshkey.private
-ssh -i sshkey.private -p 2220 bandit14@localhost
-# then on bandit14:
-cat /etc/bandit_pass/bandit14
 ```
 
----
+![level 13 screenshot 2](images/Screenshot27.png)
 
-## 💡 What I Learned
+And finally we can login as bandit14 using the key from our machine.
 
-* This level introduced **public-key SSH authentication**: instead of a password you use a private key that matches a public key on the remote host. ([MayADevBe Blog][1])
-* Private key **file permissions matter** — SSH refuses to use keys that are group/world-readable. Use `chmod 600` (or `700` on some walkthroughs) to secure the key before using it. ([MayADevBe Blog][1])
-* How to **safely transfer keys** with `scp`, and the importance of deleting sensitive keys from local machines after use. ([Medium][2])
-
+```bash
+ssh -i sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org
 ```
+
+* The -i flag is used to use ssh with private key.
+
+![level 13 screenshot 3](images/Screenshot28.png)
+
+![level 13 screenshot 4](images/Screenshot29.png)
+
+After logging in as bandit14 we can find the level's password in the directory provided in the question which is etc/bandit_pass/bandit14.
+
+```bash
+cat etc/bandit_pass/bandit14
+```
+
+![level 13 screenshot 5](images/Screenshot30.png)
