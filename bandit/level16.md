@@ -1,6 +1,8 @@
 * We know that in the previous levels we needed to send that level's password to localhost on a specific port. In this level what is different is that the specific port is not specified. We are told that the port we are looking for is in the range of 31000-32000 and it should speak ssl. So we need to do some post scanning in order to find the port and then send the password on it. And we have the best tool for the job. The most famous tool for port scanning is nmap. Nmap (Network mapper) is an open-source linux tool for network and security auditing. The tool helps network administrators reveal hosts and services on various systems. We can use some interesting flags like -T4 to increase speed of the scan, -sV to look for open ports on services and -p to specify the port/ports we scan.
 
+```bash
 nmap -sV -p 31000-32000 localhost
+```
 
 ![level16 screenshot 1](images/Screenshot34.png)
 
@@ -8,13 +10,21 @@ nmap -sV -p 31000-32000 localhost
 
 Therefore, we will now proceed to openssl using that port:
 
+```bash
+openssl s_client -connect localhost:31790
+```
+
 ![level16 screenshot 2](images/Screenshot35.png)
 
 * The openssl command successfully initiated the connection to localhost using the port we just found moments ago. Now, all we need is to submit the current password to it. But there is a problem, I found that by default, OpenSSL runs in interactive mode. This means entering the characters Q, R, K, and k will be treated as commands. Our password starts with ‘k’, which, according to the manual, will send a key update message to the server. 
 
 ![level 16 screenshot 3](images/Screenshot36.png)
 
-* To prevent this, we need to disable interactive mode by adding the -quiet flag.
+* To prevent this, we need to disable interactive mode by adding the `-quiet` flag.
+
+```bash
+openssl s_client -quiet -connect localhost:31790
+```
 
 ![level 16 screenshot 4](images/Screenshot37.png)
 
@@ -23,11 +33,15 @@ Therefore, we will now proceed to openssl using that port:
 ![level 16 screenshot 5](images/Screenshot38.png)
 ![level 16 screenshot 6](images/Screenshot39.png)
 
-* The SSH key cannot be used unless only the file owner has read/write access to it, so we use chmod to change its permissions. You can see in the picture before and asfter the command.
+* The SSH key cannot be used unless only the file owner has read/write access to it, so we use chmod to change its permissions. You can see in the picture before and after the command.
 
 ![level 16 screenshot 7](images/Screenshot40.jpg)
 
 * Finally we can login into level 17 using ssh and the key:
+
+ ```bash
+ssh -i key.private -p 2220 bandit17@bandit.labs.overthewire.org
+```
 
 ![level 16 screenshot 8](images/Screenshot41.png)
 
