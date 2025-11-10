@@ -2,11 +2,11 @@
 
 ![level 19 screenshot 1](images/Screenshot47.png)
 
-* As we expected we see a file named bandit20-do which is owned by bandit20 and can be executed by the currect user which is bandit19. To run an executable file we just need to write its name along with its direction.
+* As we expected we see a file named `bandit20-do` which is owned by `bandit20` and can be executed by the currect user which is `bandit19`. To run an executable file we just need to write its name along with its direction.
 
 ![level 19 screenshot 2](images/Screenshot48.png)
 
-* The file is telling us to run the commnads as another user. So we are allowed to run commands as a user 20. For example it is telling us to run a command whoami as another user so let us run two commands whoami and id and see if it works:
+* The file is telling us to run the commnads as another user. So we are allowed to run commands as `user 20`. For example it is telling us to run a command `whoami` as another user so let us run two commands `whoami` and `id` and see if it works:
 
 ![level 19 screenshot 3](images/Screenshot49.png)
 
