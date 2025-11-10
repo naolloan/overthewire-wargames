@@ -4,14 +4,18 @@
 
 * So our task is to setup a listener on any port on a system that will return the previous level's password. We can use netcat to setup a listener:
 
-echo "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | netcat -lp 1000 &
+```bash
+echo "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | netcat -lp 31000 &
+```
 
-* The -l flag is to setup a listener and the -p flag as we already know is to specify the port the listener should listen on. 1234 is the port. The “&” at the end of the command is used to specify that we want the command to run in the background. The jobs command can be used to view all the processes on the system. Since we haven't specified the IP address the listener is going to run on localhost.
+* The `-l` flag is to setup a listener and the `-p` flag as we already know is to specify the port the listener should listen on. `31000` is the port. The `&` at the end of the command is used to specify that we want the command to run in the background. The `jobs` command can be used to view all the processes on the system. Since we haven't specified IP address the listener is going to run on localhost.
 
 ![level 20 screenshot 2](images/Screenshot52.png)
 
 * After setiinng up the listener, we can now use the binary file to connect on the same port and do its match checking:
 
-./suconnect 1000
+```bash
+./suconnect 31000
+```
 
 ![level 20 screenshot 3](images/Screenshot53.png)
